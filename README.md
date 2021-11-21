@@ -1,5 +1,5 @@
 # emacs-network-engineering
-- This should someday become an helpful extension for the GNU Emacs text editor.
+- This should someday become a helpful extension for the GNU Emacs text editor.
 - The code is not that good because I'm just a beginner in Emacs LISP.
 
 ## Current functions
