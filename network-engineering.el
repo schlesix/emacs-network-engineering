@@ -1,8 +1,10 @@
-;;;; This code is not ready for use, I'm a LISP rookie, tinkering around at the moment
+;;;; Some useful functions for network engineers
 
 
-;(require 'cl)
-(defun format-mac (start end)
+
+;; This functions formats a marked  MAC address in Cisco notation  (xxxx.xxxx.xxxx)
+;; It replaces the original MAC address
+(defun format-mac-in-buffer (start end)
   (interactive "r")
   ;; Falls Textmarkierung vorhanden, dann markierten Text ausschneiden
   (if (use-region-p)
@@ -44,8 +46,12 @@
 	 )
 	)))
 
+;; This function translates a network mask from Decimal Dotten into CIDR notation
+;; Example: 255.255.255.0 -> /16
+;; The CIDR notation is being displayed as message
 (defun ddn2cidr (ddn)
-  (interactive "DDN: ")
+  (interactive "r")
+  (setq ddn (string-trim ddn))
   (setq cidr "/0")
   (cond ((string= ddn "128.0.0.0")
 	 (setq cidr "/1"))
@@ -55,106 +61,80 @@
 	 (setq cidr "/3"))
 	((string= ddn " 240.0.0.0")
 	 (setq cidr "/4"))
+	 ((string= ddn "248.0.0.0")
+	 (setq cidr "/5"))
+	 ((string= ddn "252.0.0.0")
+	 (setq cidr "/6"))
+	 ((string= ddn "254.0.0.0")
+	 (setq cidr "/7"))
+	 ((string= ddn "255.0.0.0")
+	 (setq cidr "/8"))
+	 ((string= ddn "255.128.0.0")
+	 (setq cidr "/9"))
+	 ((string= ddn "255.192.0.0")
+	 (setq cidr "/10"))
+	 ((string= ddn "255.224.0.0")
+	 (setq cidr "/11"))
+	 ((string= ddn "255.240.0.0")
+	 (setq cidr "/12"))
+	 ((string= ddn "255.248.0.0")
+	 (setq cidr "/13"))
+	 ((string= ddn "255.252.0.0")
+	 (setq cidr "/14"))
+	 ((string= ddn "255.254.0.0")
+	 (setq cidr "/15"))
+	 ((string= ddn "255.255.0.0")
+	 (setq cidr "/16"))
+	 ((string= ddn "255.255.128.0")
+	 (setq cidr "/17"))
+	 ((string= ddn "255.255.192.0")
+	 (setq cidr "/18"))
+	 ((string= ddn "255.255.224.0")
+	 (setq cidr "/19"))
+	 ((string= ddn "255.255.240.0")
+	 (setq cidr "/20"))
+	 ((string= ddn "255.255.248.0")
+	 (setq cidr "/21"))
+	 ((string= ddn "255.255.252.0")
+	 (setq cidr "/22"))
+	 ((string= ddn "255.255.254.0")
+	 (setq cidr "/23"))
+	 ((string= ddn "255.255.255.0")
+	 (setq cidr "/24"))
+	 ((string= ddn "255.255.255.128")
+	 (setq cidr "/25"))
+	 ((string= ddn "255.255.255.192")
+	 (setq cidr "/26"))
+	 ((string= ddn "255.255.255.224")
+	 (setq cidr "/27"))
+	 ((string= ddn "255.255.255.240")
+	 (setq cidr "/28"))
+	 ((string= ddn "255.255.255.248")
+	 (setq cidr "/29"))
+	 ((string= ddn "255.255.255.252")
+	 (setq cidr "/30"))
+	 ((string= ddn "255.255.255.254")
+	 (setq cidr "/31"))
 	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-	 ((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-		
+	  (setq cidr "/32"))))
 
-	((string= ddn "255.255.255.255")
-	 (setq cidr "/32"))
-;        
-;       192.0.0.0 
-;      224.0.0.0 
-;       240.0.0.0 
-;       248.0.0.0 
-;       252.0.0.0 
-;       254.0.0.0 
-;       255.0.0.0 
-;     255.128.0.0 
-;     255.224.0.0 
-;     255.240.0.0 
-;     255.248.0.0 
-;     255.252.0.0 
-;     255.254.0.0 
-;     255.255.0.0 
-;   255.255.128.0 
-;   255.255.192.0 
-;   255.255.224.0 
-;   255.255.240.0 
-;   255.255.248.0 
-;   255.255.252.0 
-;   255.255.254.0 
-;   255.255.255.0 
-; 255.255.255.128 
-; 255.255.255.192 
-; 255.255.255.224 
-; 255.255.255.240 
-; 255.255.255.248 
-; 255.255.255.252 
-; 255.255.255.254 
-; 255.255.255.255 
-	)
-  (message cidr))
-;  (message ddn)
 
-;;
 
-;; 4c52.3c5e.2728
-;; 4c52.3c5e.2728
-;; 4c52.3c5e.2728
-;; 4c52.3c5e.2728
-;;4c52.3c5e.2728
-;; 4c52.3c5e.2728
+(defun ddn2cidr-in-buffer (start end)
+  (interactive "r")
+  ;; Falls Textmarkierung vorhanden, dann markierten Text ausschneiden
+  (if (use-region-p)
+      (progn
+	(let ((regionp (buffer-substring start end)))
+	(message regionp)
+        (setq cidr (ddn2cidr regionp))
+        (delete-region start end)
+        (insert cidr)
+      ))
+	 (message "*** Invalid DDN network mask! ***")
+	 ))
+
+
+
+
+  
