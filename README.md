@@ -1,6 +1,6 @@
 # emacs-network-engineering
 - This should someday become a helpful extension for the GNU Emacs text editor.
-- The code is not that good because I'm just a beginner in Emacs LISP.
+- The code is not that good because I'm just a beginner in Emacs LISP (and LISP in general).
 
 ## Current functions
 ### *format-mac-in-buffer*
