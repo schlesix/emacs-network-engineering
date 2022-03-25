@@ -6,6 +6,7 @@
 ### *format-mac-in-buffer*
 - This functions transforms a marked valid MAC address into the Cisco format (xxxx.xxxx.xxxx)
 - There's currently no key binding.
+- Usage: highlight mac address in buffer, execute function with M-x
 
 ### **ddn2cidr**
 - This function returns a given network mask in Decimal Dotted Notation (DDN) in CIDR notation.
