@@ -11,9 +11,10 @@
 ### **ddn2cidr**
 - This function returns a given network mask in Decimal Dotted Notation (DDN) in CIDR notation.
 - Example: "255.255.255.0" -> "/16"
-- There's currently no key binding.
+- No direct use for end users, function is being called from **ddn2cidr-in-buffer**
 
 ### **ddn2cidr-in-buffer**
 - This function transforms a marked valid network mask in Decimal Dotted Notation (DDN) in CIDR notation.
 - Example: "255.255.255.0" -> "/16"
 - There's currently no key binding.
+- Usage: highlight mask in dotted decimal notation, execute function with M-x
